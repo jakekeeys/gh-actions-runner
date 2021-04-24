@@ -1,11 +1,16 @@
 #!/bin/bash
 
+cd /root
+mkdir actions-runner
+cd actions-runner
+curl -O -L https://github.com/actions/runner/releases/download/v${RUNNER_VERSION}/actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz
+tar xzf ./actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz
+
+/root/actions-runner/bin/installdependencies.sh
+
 ORGANIZATION=$ORGANIZATION
 ACCESS_TOKEN=$ACCESS_TOKEN
-
 REG_TOKEN=$(curl -sX POST -H "Authorization: token ${ACCESS_TOKEN}" https://api.github.com/orgs/${ORGANIZATION}/actions/runners/registration-token | jq .token --raw-output)
-
-cd /home/docker/actions-runner
 
 CONFIG_OPTS=""
 if [[ -n $RUNNER_LABELS ]]; then
