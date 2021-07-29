@@ -5,7 +5,7 @@ RUN apt-get install -y sudo docker.io curl jq build-essential libssl-dev libffi-
 
 ENV TZ=Europe/London
 ENV DEBIAN_FRONTEND=noninteractive
-ENV RUNNER_VERSION="2.278.0"
+ENV RUNNER_VERSION="2.279.0"
 ENV RUNNER_ALLOW_RUNASROOT=1
 
 COPY start.sh start.sh
